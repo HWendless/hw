@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.wang.pojo.User">
+    <select id="getById" parameterType="Integer" resultType="com.mobiusvision.po.InfoEnterprise">
+    SELECT * FROM t_user WHERE id=#{id}
+</select>
+
+
+    <insert id="insertInfoEnterprise" parameterType="java.util.List">
+        insert into info_enterprise
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.registeredCapital},
+            #{item.legalRepresentative},
+            #{item.nameUsedBefore},
+            #{item.unifiedSocialCreditCode},
+            #{item.companyNumber},
+            #{item.registrationAuthority},
+            #{item.enterpriseType},
+            #{item.administrativeDivision},
+            #{item.registrationAddress},
+            #{item.scopeofBusiness},
+            #{item.paidCapital},
+            #{item.businessStatus},
+            #{item.industry},
+            #{item.taxpayerIdentificationNumber},
+            #{item.organizationalCode},
+            #{item.dateOfEstablishment},
+            #{item.businessTerm},
+            #{item.annualInspectionDate},
+            #{item.useless},
+            #{item.mailbox},
+            #{item.telephone},
+            #{item.describe},
+            #{item.name}
+            )
+        </foreach>
+    </insert>
+    <insert id="insertlistshareholder" parameterType="java.util.List">
+        insert into info_shareholder
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.shareholder},
+            #{item.contributionsPledged},
+            #{item.actualContribution},
+            #{item.unifiedSocialCreditCode},
+            #{item.useless},
+            #{item.type}
+            )
+        </foreach>
+    </insert>
+
+    <insert id="insertInfoPrincipalPersonnel" parameterType="java.util.List">
+        insert into info_principal_personnel
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.name},
+            #{item.post},
+            #{item.unifiedSocialCreditCode},
+            #{item.useless}
+            )
+        </foreach>
+    </insert>
+    <insert id="insertInfoPropertyRightWebsite" parameterType="java.util.List">
+        insert into info_property_right_website
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.homeAddress},
+            #{item.websiteAme},
+            #{item.domainName},
+            #{item.recordNo},
+            #{item.unifiedSocialCreditCode},
+            #{item.useless}
+            )
+        </foreach>
+    </insert>
+    <select id="selectall" resultType="com.mobiusvision.po.InfoEnterprise">
+        select unified_social_credit_code,name  from info_enterprise
+    </select>
+
+
+    <insert id="insertinfoPropertyRightPatent" parameterType="java.util.List">
+        insert into info_property_right_patent
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.name},
+            #{item.type},
+            #{item.applicationNumber},
+            #{item.filingDate},
+            #{item.applicationPublicationNumber},
+            #{item.applicationPublicationDate},
+            #{item.legalHistory},
+            #{item.inventor},
+            #{item.professionalApplicants},
+            #{item.professionalGency},
+            #{item.professionalAgent},
+            #{item.legalStatus},
+            #{item.details},
+            #{item.useless},
+            #{item.unifiedSocialCreditCode}
+            )
+        </foreach>
+    </insert>
+
+
+    <insert id="insertcode" parameterType="java.util.List">
+        insert into QRC_CUSTOMER(
+        CUSTOMER_NAME,
+        CUSTOMER_CODE,
+        ID,
+        LAT,
+        LON,
+        CUSTOMER_ORDER,
+        IS_ACTIVE,
+        DELIVERYLINE_CODE
+        )
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+
+            #{item.CUSTOMER_NAME},
+            #{item.CUSTOMER_CODE},
+            #{item.ID},
+            #{item.LAT},
+            #{item.LON},
+            #{item.CUSTOMER_ORDER},
+            #{item.IS_ACTIVE},
+            #{item.DELIVERYLINE_CODE}
+            )
+        </foreach>
+    </insert>
+
+
+    <!--<insert id="insert_auth_recently_used" parameterType="AuthRecentlyUsed">-->
+        <!--insert into auth_recently_used(-->
+        <!--user_id,-->
+        <!--peration_time,-->
+        <!--app_id,-->
+        <!--app_code,-->
+        <!--main_page_url,-->
+        <!--id-->
+        <!--)-->
+        <!--values-->
+        <!--(-->
+        <!--#{userId},-->
+        <!--#{perationTime},-->
+        <!--#{appId},-->
+        <!--#{appCode},-->
+        <!--#{mainPageUrl},-->
+        <!--#{id}-->
+        <!--)-->
+    <!--</insert>-->
+
+
+    <insert id="insert_yc" parameterType="java.util.Map">
+
+        insert into tobacco(
+        id,
+        packing,
+        strip_packing,
+        box_packing,
+        tobacco_brand,
+        tobacco_model,
+        tobacco_img,
+        bar_code
+        )
+        values
+        (
+        #{id},
+        #{packing},
+        #{strip_packing},
+        #{box_packing},
+        #{tobacco_brand},
+        #{tobacco_model},
+        #{tobacco_img},
+        #{bar_code}
+        )
+    </insert>
+
+
+</mapper>

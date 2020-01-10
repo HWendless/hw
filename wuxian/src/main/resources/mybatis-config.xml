@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true" />
+    </settings>
+
+
+    <!--<typeAliases>-->
+        <!--&lt;!&ndash; 为实体类com.demo.entity.User配置一个别名User &ndash;&gt;-->
+        <!--&lt;!&ndash; <typeAlias type="com.demo.entity.User" alias="User"/> &ndash;&gt;-->
+        <!--&lt;!&ndash; 为com.demo.entity包下的所有实体类配置别名，MyBatis默认的设置别名的方式就是去除类所在的包后的简单的类名-->
+        <!--比如com.demo.entity.User这个实体类的别名就会被设置成User-->
+         <!--&ndash;&gt;-->
+        <!--&lt;!&ndash;<package name="com.hw.flow"/>&ndash;&gt;-->
+    <!--</typeAliases>-->
+    <!-- 环境配置 -->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <!-- 数据库连接相关配置 ,这里动态获取config.properties文件中的内容-->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver" />
+                <property name="url" value="jdbc:mysql://192.168.60.79:3306/yc?characterEncoding=utf-8" />
+                <property name="username" value="wxyj" />
+                <property name="password" value="123456" />
+            </dataSource>
+        </environment>
+    </environments>
+    <!-- mapping文件路径配置 -->
+    <mappers>
+        <mapper resource="mapper/fhqMapper.xml"/>
+    </mappers>
+
+</configuration>
